@@ -6,7 +6,6 @@
 using namespace std;
 
 vector<vector<int>> map;
-int movement = 0;
 int direction[4][2] = { {0,-1},{1,0},{0,1},{-1,0} };
 queue<pair <int, int>> q;
 pair<int, int> p;
