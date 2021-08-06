@@ -9,6 +9,7 @@ int main(void)
 	map<int, int> xx;
 	map<int, int> yy;
 	map<int, int>::iterator it;
+
 	for (int i = 0; i < 3; i++)
 	{
 		cin >> x >> y;
