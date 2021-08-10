@@ -2,6 +2,7 @@
 #include <vector>
 
 using namespace std;
+
 vector<int> v(1000001);
 vector<int> w;
 
