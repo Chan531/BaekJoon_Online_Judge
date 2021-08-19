@@ -8,9 +8,8 @@ int main(void)
 	for (int i = 0; i < 10; i++)
 	{
 		if (i == 0)
-		{
 			cin >> n;
-		}
+
 		else
 		{
 			cin >> num;
