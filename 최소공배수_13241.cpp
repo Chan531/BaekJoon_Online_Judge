@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int gcd(int n, int m)
 {
 	if (m == 0)
