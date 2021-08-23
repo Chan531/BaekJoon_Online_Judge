@@ -9,9 +9,7 @@ int main(void)
 	cin >> n >> k;
 	vector<int> v(501502);
 	v[0] = 1;
-	v[1] = 1;
-	v[2] = 1;
-	for (int i = 2; i <= n; i++)
+	for (int i = 1; i <= n; i++)
 	{
 		int start = i * (i + 1) / 2;
 		int end = (i + 2) * (i + 1) / 2;
