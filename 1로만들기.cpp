@@ -34,7 +34,6 @@ int main(void)
 		{
 			if (v[w[i] / 2] == 0 || v[w[i] / 2] > v[w[i]] + 1)
 			{
-
 				v[w[i] / 2] = v[w[i]] + 1;
 				w.push_back(w[i] / 2);
 			}
