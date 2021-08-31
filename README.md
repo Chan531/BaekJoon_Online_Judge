@@ -13,7 +13,7 @@ cout.tie(NULL);
 
 **2. 프로그램 강제 종료**
 ```c++
-exit(0)
+exit(0);
 ```
 
 **3. 문자 관련 함수**
@@ -58,7 +58,7 @@ replace(v.begin(), v.end(), 바꾸려는 값, 바꿀 값);
 map에 요소 존재 여부 확인
 ```C++
 map<int, int>:: iterator it;
-it = m.find(5)
+it = m.find(5);
 ```
 만약 m[5]가 존재하지 않는다면 it == m.end()를 가리키게 됨!!!! (백준 9184번 참고)
 
@@ -79,7 +79,7 @@ string str="java c c++ python";
 **7. 문자열 일부분 자르기**
 ```C++
 string s = "HelloWorld!"
-s.substr(0, 5) == "Hello" (시작점, 자를 길이)
+s.substr(0, 5) == "Hello"; (시작점, 자를 길이)
 ```
 
 **8. Pair 클래스**
@@ -101,13 +101,13 @@ get<3>(info) -> "hello"
 #include <algorithm>
 *max_element(a.begin(), a.end());
 *min_element(a.begin(), a.end());
-index = max_element(v.begin(), v.end()) - v.begin()
+index = max_element(v.begin(), v.end()) - v.begin();
 ```
 
 **11. 소수점 자릿수 고정**
 ```C++
 cout << fixed;
-cout.precision(원하는 자릿수)
+cout.precision(원하는 자릿수);
 ```
 
 **12. 중복 원소 정렬 후 제거**
@@ -123,32 +123,32 @@ unique를 적용해주면 시작점이 중복된 원소가 몰아져있는 끝 �
 
 **14. 제곱, 제곱근 함수**
 ```C++
-pow(10, 2) -> 100
-sqrt(9) -> 3
+pow(10, 2); -> 100
+sqrt(9); -> 3
 ```
 
 **15. 올림, 내림, 반올림 함수**
 ```C++
-ceil(4.2) -> 5
-floor(4.2) -> 4
+ceil(4.2); -> 5
+floor(4.2); -> 4
 ```
 * 반올림 방법
 ```C++
-floor(4.2 + 0.5) -> 4
-floor(4.7 + 0.5) -> 5
--> round(3.2) ==> 3 / round라는 함수가 존재!
+floor(4.2 + 0.5); -> 4
+floor(4.7 + 0.5); -> 5
+-> round(3.2); ==> 3 / round라는 함수가 존재!
 ```
 
 **16. 벡터의 총합**
 ```C++
 #include <numeric>
-accumulate(v.begin(), v.end(), 0)
+accumulate(v.begin(), v.end(), 0);
 ```
 0 -> 합의 초기
 (만약 합이 int를 초기화하면 0을 0LL 같은 long long 형으로 적어줘야 함)
 * **16-1. 벡터의 곱 (1-> 곱의 초기)**
 ```C++
-accumulate(v.begin(), v.end(), 1, multiplies<int>())
+accumulate(v.begin(), v.end(), 1, multiplies<int>());
 ```
 
 **17. DP - 동적계획법 - 다이나믹프로그래밍**
@@ -165,11 +165,11 @@ for (int i = 2; i <= n; i++)
 
 **18. 벡터 내 원소 개수 확인 함수**
 ```C++
-count(v.begin(), v.end(), num)
+count(v.begin(), v.end(), num);
 ```
 * **18-1. 조건에 만족하는 원소 개수**
 ```C++
-count_if(v.begin(), v.end(), 조건)
+count_if(v.begin(), v.end(), 조건);
 ```
 
 **19. 문자를 문자열로 변경**
@@ -207,8 +207,29 @@ index를 알고 싶으면 - v.begin()
 
 **22. 조합**
 ```C++
-next_permutation(v.begin(), v.end())
+next_permutation(v.begin(), v.end());
 -> 1 2 3라면 1 2 3, 1 3 2, 2 1 3, 2 3 1, 3 1 2, 3 2 1하고 각각 true 반환, 만약 다음이 없다면 false를 반환
+```
+* **22-1. nCr 하는 법**
+```C++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+ 
+int main() {
+    vector<int> s{ 1, 2, 3, 4 };
+    vector<int> temp{ 1, 1, 0, 0 };
+ 
+    do {
+        for (int i = 0; i < s.size(); ++i) {
+            if (temp[i] == 1)
+                cout << s[i] << ' ';
+        }
+        cout << endl;
+    } while (prev_permutation(temp.begin(), temp.end()));
+}
+출처: https://mjmjmj98.tistory.com/38 [dlroW ,olleH]
 ```
 
 **23. 유클리드 알고리즘(재귀)**
@@ -233,9 +254,9 @@ getline(cin, s);
 
 **25. 문자열 비교**
 ```C++
-int strcmp(str1, str2)
+int strcmp(str1, str2);
 -> 같으면 0, 다르면 사전순에 따라 앞서면 -1, 뒤에 있으면 1 반환
-int strncmp(str1, str2, n)
+int strncmp(str1, str2, n);
 -> n까지 같으면 0 다르면 1 반환
 ```
 
@@ -245,11 +266,11 @@ vector<vector<int>> v(10, vector<int>(10,0));
 -> 총 100칸의 0으로 채워진 2차원 벡터 생성
 ```
 
-**27. list erase관련**
+**27. erase관련**
 ```C++
 iter = l.erase(iter);
 ```
-l.erase(iter);는 iter가 가리키는 부분을 삭제하고 다음 값을 반환한다. 
+EX) l.erase(iter);는 iter가 가리키는 부분을 삭제하고 다음 값을 반환한다. 
 이 때, 위와 같은 방식으로 반환하는 iter 값을 받지 않으면 에러가 발생한다.
 
 **28. 피사노 주기**
