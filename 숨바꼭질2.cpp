@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <algorithm>
 
 using namespace std;
 
@@ -11,7 +10,7 @@ int main(void)
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int n, k, cp, ct ,mt = 100000, num;
+	int n, k, cp, ct ,mt = 100001, num;
 	queue<pair<int, int>> q;
 	vector<int> visited(100001, 100000);
 	cin >> n >> k;
