@@ -15,12 +15,14 @@ int main(void)
 	map<int, string> index;
 	string s;
 	cin >> n >> m;
+
 	for (int i = 1; i <= n; i++)
 	{
 		cin >> s;
 		index[i] = s;
 		name[s] = i;
 	}
+
 	for (int i = 0; i < m; i++)
 	{
 		cin >> s;
