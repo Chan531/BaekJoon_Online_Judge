@@ -286,3 +286,15 @@ M=10^k (k>2)일 때, 주기는 항상 15*10^(K-1)이다.
 cin.eof() == true;
 ```
 -> cin.eof()는 true를 반환한다.
+
+**30. pair 정렬 관련**
+```C++
+struct cmp {
+	bool operator()(pair<int, int>a, pair<int, int>b) {
+		if (a.first == b.first)
+			return a.second < b.second;
+		return a.first > b.first;
+	}
+};
+```
+-> first를 기준으로 오름차순, second를 기준으로 내림차순 (부등호가 왼쪽이면 오름차순, 오른쪽이면 내림차순으로 이해하는 게 편할 거 같다....)
