@@ -51,9 +51,9 @@ int main(void)
 	}
 	cin >> v1 >> v2;
 	for (int i = 1; i <= n; i++)
-	{
-		finddes(i);
-	}
+		if (i == 1 || i == v1 || i == v2)
+			finddes(i);
+
 	answer = min(v[1][v1] + v[v1][v2] + v[v2][n], v[1][v2] + v[v2][v1] + v[v1][n]);
 	if (answer >= 200000001)
 		cout << -1;
