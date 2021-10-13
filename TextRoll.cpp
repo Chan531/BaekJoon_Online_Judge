@@ -35,7 +35,7 @@ int main(void)
 					dp = t.length();
 			}
 		}
-			cout << dp + 1 << '\n';
+		cout << dp + 1 << '\n';
 	}
 	return 0;
 }
