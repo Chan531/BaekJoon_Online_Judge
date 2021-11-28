@@ -6,14 +6,14 @@ using namespace std;
 int main(void)
 {
 	int n;
-	string s;
+	string sen;
 	cin >> n;
 	cin.ignore();
 	while (n--)
 	{
-		getline(cin, s);
-		if (s.length() > 10 && s.substr(0, 10) == "Simon says")
-			cout << s.substr(10, s.length() - 10) << '\n';
+		getline(cin, sen);
+		if (sen.length() > 10 && sen.substr(0, 10) == "Simon says")
+			cout << sen.substr(10, sen.length() - 10) << '\n';
 	}
 	return 0;
 }
