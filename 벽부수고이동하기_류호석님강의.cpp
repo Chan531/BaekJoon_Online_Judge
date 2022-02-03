@@ -16,7 +16,6 @@ vector<vector<char>> map(1001, vector<char>(1001));
 vector<vector<int>> dir = { {-1, 0},{0,1},{1,0},{0,-1} };
 vector<Node> graph[1001][1001][2];
 int dist[1001][1001][2];
-vector<vector<vector<int>>> dist(1001, vector<vector<int>>(1001, vector<int>(2)));
 
 void input()
 {
