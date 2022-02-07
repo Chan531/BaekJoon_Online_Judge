@@ -29,7 +29,6 @@ void solution()
 	{
 		int num = q.front();
 		q.pop();
-
 		ans[num] = cnt++;
 
 		sort(line[num].begin(), line[num].end());
