@@ -2,19 +2,14 @@
 
 using namespace std;
 
-int n, k, a = 1, b;
+int n, k, ans = 1;
 
 void solve()
 {
 	cin >> n >> k;
 	for (int i = 2; i <= n; i++)
-	{
-		if (i % 2)
-			a = (b + k - 1) % i + 1;
-		else
-			b = (a + k - 1) % i + 1;
-	}
-	n % 2 ? cout << a : cout << b;
+		ans = (ans + k - 1) % i + 1;
+	cout << ans;
 }
 
 int main(void)
