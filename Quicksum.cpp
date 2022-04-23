@@ -6,6 +6,7 @@ using namespace std;
 int main(void)
 {
 	string line;
+
 	while (getline(cin, line))
 	{
 		if (line == "#")
