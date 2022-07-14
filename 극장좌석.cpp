@@ -21,14 +21,15 @@ void solution()
 		seat[i] = seat[i - 1] + seat[i - 2];
 
 	int ans = 1, idx = 0;
+	vip[m] = n + 1;
 
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i <= m; i++)
 	{
 		ans *= seat[vip[i] - idx - 1];
 		idx = vip[i];
 	}
 
-	cout << ans * seat[n - idx];
+	cout << ans;
 }
 
 void solve()
