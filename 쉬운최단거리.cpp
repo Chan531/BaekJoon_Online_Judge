@@ -8,7 +8,8 @@ struct node {
 	int y, x, dis;
 };
 
-int n, m, map[1000][1000], ans[1000][1000], dir[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
+int n, m;
+int map[1000][1000], ans[1000][1000], dir[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
 queue<node> q;
 
 void input()
