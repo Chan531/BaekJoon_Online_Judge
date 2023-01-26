@@ -1,62 +1,68 @@
 #include <iostream>
-#include <deque>
-#include <vector>
+#include <queue>
+#define p pair<int, int>
+#define N 100000
 
 using namespace std;
 
-int main(void)
+int n, k;
+bool visited[N + 1];
+
+void input()
 {
-	int x, nx;
-	deque<pair <int, int>> q;
-	vector<int> v(100001);
-	int time = 100000;
-	int answer = 0;
-	cin >> x >> nx;
-	q.push_back(make_pair(x, 0));
+	cin >> n >> k;
+}
+
+void solution()
+{
+	queue<p> q;
+	q.push({ n, 0 });
+	visited[n] = 1;
+
 	while (!q.empty())
 	{
-		pair <int, int> p = q.front();
-		q.pop_front();
-		if (p.first > 100000 || p.first < 0)
-		{
+		int pos = q.front().first;
+		int cnt = q.front().second;
+		q.pop();
 
-		}
-		else if (v[p.first] == 1)
+		if (pos == k)
 		{
-
-		}
-		else if (p.first == nx)
-		{
-			v[p.first]++;
-			if (time < p.second)
-				cout << time;
-			else
-				cout << p.second;
-			answer++;
+			cout << cnt;
 			break;
 		}
-		else if (p.first > nx)
+
+		if (pos + 1 <= N && !visited[pos + 1])
 		{
-			v[p.first]++;
-			while (p.first != nx)
-			{
-				p.first--;
-				p.second++;
-			}
-			if (time > p.second)
-				time = p.second;
+			visited[pos + 1] = 1;
+			q.push({ pos + 1, cnt + 1 });
 		}
-		else
+
+		if (pos - 1 >= 0 && !visited[pos - 1])
 		{
-			v[p.first]++;
-			q.push_back(make_pair(p.first + 1, p.second + 1));
-			q.push_back(make_pair(p.first - 1, p.second + 1));
-			q.push_back(make_pair(p.first * 2, p.second + 1));
+			visited[pos - 1] = 1;
+			q.push({ pos - 1, cnt + 1 });
+		}
+
+		if (pos * 2 <= N && !visited[pos * 2])
+		{
+			visited[pos * 2] = 1;
+			q.push({ pos * 2, cnt + 1 });
 		}
 	}
-	if (answer == 0)
-	{
-		cout << time;
-	}
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
 	return 0;
 }
