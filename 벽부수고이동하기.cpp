@@ -1,79 +1,89 @@
 #include <iostream>
-#include <vector>
+#include <cstring>
 #include <queue>
-#include <tuple>
+#define N 1000
 
 using namespace std;
 
-int main(void)
+struct node {
+	int y, x, cnt, des;
+};
+
+int n, m, ans = -1, dir[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
+char map[N][N];
+bool visited[N][N][2];
+
+void input()
 {
-	int n, m, x, y, cw, mp = 1000000, p, nx, ny;
-	string s;
 	cin >> n >> m;
-	vector<vector<int>> v(n, vector<int>(m));
-	vector<vector<int>> visited(n, vector<int>(m));     // 오는 동안 벽을 부순 적이 있으면 2, 없으면 1
-	visited[0][0] = 1;
-	vector<vector<int>> dir = { { -1,0 }, { 0,1 }, { 1,0 }, { 0, -1 } };
-	queue<tuple<int, int, int, int>> q;
+
 	for (int i = 0; i < n; i++)
-	{
-		cin >> s;
 		for (int j = 0; j < m; j++)
-			v[i][j] = s[j] - '0';
-	}
-	q.push(make_tuple(0, 0, 0, 1));                     // 부신 벽의 수, x, y, 경로
+			cin >> map[i][j];
+}
+
+void solution()
+{
+	memset(visited, 0, sizeof(visited));
+
+	queue<node> q;
+	q.push({ 0, 0, 1, 0 });
+	visited[0][0][0] = 1;
+
 	while (!q.empty())
 	{
-		cw = get<0>(q.front());
-		x = get<1>(q.front());
-		y = get<2>(q.front());
-		p = get<3>(q.front());
+		int y = q.front().y;
+		int x = q.front().x;
+		int cnt = q.front().cnt;
+		int des = q.front().des;
 		q.pop();
-
-		if (x > m || x < 0 || y > n || y < 0 || cw > 1)
-			continue;
 
 		if (y == n - 1 && x == m - 1)
 		{
-			if (mp > p)
-				mp = p;
+			ans = cnt;
+			break;
 		}
 
 		for (int i = 0; i < 4; i++)
 		{
-			nx = x + dir[i][1];
-			ny = y + dir[i][0];
+			int ny = y + dir[i][0];
+			int nx = x + dir[i][1];
 
-			if (nx < m && nx >= 0 && ny < n && ny >= 0 && !visited[ny][nx])
+			// map 벗어나면 pass
+			if (ny < 0 || ny >= n || nx < 0 || nx >= m)
+				continue;
+
+			// 길이고 현재 남은 des로 아직 방문하지 않았다면
+			if (map[ny][nx] == '0' && !visited[ny][nx][des])
 			{
-				if (v[ny][nx] && !cw)
-				{
-					q.push(make_tuple(cw + 1, nx, ny, p + 1));
-					visited[ny][nx] = 2;
-				}
-				else if (!v[ny][nx])
-				{
-					q.push(make_tuple(cw, nx, ny, p + 1));
-					if (cw)
-						visited[ny][nx] = 2;
-					else
-						visited[ny][nx] = 1;
-				}
+				visited[ny][nx][des] = 1;
+				q.push({ ny, nx, cnt + 1, des });
 			}
 
-			else if (nx < m && nx >= 0 && ny < n && ny >= 0 && visited[ny][nx] == 2 && !cw)
+			// 벽이고 아직 부술 수 있다면 
+			if (map[ny][nx] == '1' && des != 1)
 			{
-				if (!v[ny][nx])
-				{
-					q.push(make_tuple(cw, nx, ny, p + 1));
-					visited[ny][nx] = 1;
-				}
+				visited[ny][nx][des + 1] = 1;
+				q.push({ ny, nx, cnt + 1, des + 1 });
 			}
 		}
 	}
-	if (mp == 1000000)
-		cout << -1;
-	else
-		cout << mp;
+
+	cout << ans;
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
 	return 0;
 }
