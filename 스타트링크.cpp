@@ -1,44 +1,64 @@
 #include <iostream>
 #include <queue>
-#include <vector>
+#define p pair<int, int>
+#define N 1000000
 
 using namespace std;
 
-int main(void)
+int f, s, g, u, d, ans = -1;
+bool visited[N + 1];
+
+void input()
 {
-	int f, s, g, u, d, cp, cb;
-	queue<pair<int, int>> q;
 	cin >> f >> s >> g >> u >> d;
-	vector<int> visited(f + 1);
+}
+
+void solution()
+{
+	queue<p> q;
+	q.push({ s, 0 });
 	visited[s] = 1;
-	q.push(make_pair(s, 0));
+
 	while (!q.empty())
 	{
-		cp = q.front().first;
-		cb = q.front().second;
+		int pos = q.front().first;
+		int cnt = q.front().second;
 		q.pop();
 
-		if (cp > f || cp < 0)
-			continue;
-
-		if (cp == g)
+		if (pos == g)
 		{
-			cout << cb;
-			return 0;
+			ans = cnt;
+			break;
 		}
 
-		if (cp + u <= f && !visited[cp + u])
+		if (pos + u <= f && !visited[pos + u])
 		{
-			q.push(make_pair(cp + u, cb + 1));
-			visited[cp + u] = 1;
+			q.push({ pos + u, cnt + 1 });
+			visited[pos + u] = 1;
 		}
 
-		if (cp - d > 0 && !visited[cp - d])
+		if (pos - d >= 1 && !visited[pos - d])
 		{
-			q.push(make_pair(cp - d, cb + 1));
-			visited[cp - d] = 1;
+			q.push({ pos - d, cnt + 1 });
+			visited[pos - d] = 1;
 		}
 	}
-	cout << "use the stairs";
+
+	ans == -1 ? cout << "use the stairs" : cout << ans;
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
 	return 0;
 }
