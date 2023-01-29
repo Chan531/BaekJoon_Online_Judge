@@ -3,6 +3,7 @@
 
 using namespace std;
 
+int a, b;
 string s;
 char c[5] = { 'a', 'e', 'i', 'o', 'u' };
 
@@ -13,7 +14,7 @@ void input()
 
 void solution()
 {
-	int a = 0, b = 0;
+	a = 0, b = 0;
 
 	for (int i = 0; i < s.length(); i++)
 	{
