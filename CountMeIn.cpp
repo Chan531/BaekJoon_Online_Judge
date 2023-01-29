@@ -5,7 +5,7 @@ using namespace std;
 
 int a, b;
 string s;
-char c[5] = { 'a', 'e', 'i', 'o', 'u' };
+char c[5] = { 'A', 'E', 'I', 'O', 'U' };
 
 void input()
 {
@@ -23,7 +23,7 @@ void solution()
 		
 		for (int j = 0; j < 5; j++)
 		{
-			if (c[j] == tolower(s[i]))
+			if (c[j] == toupper(s[i]))
 			{
 				b++;
 				break;
