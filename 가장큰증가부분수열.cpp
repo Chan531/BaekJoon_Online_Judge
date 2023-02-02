@@ -1,38 +1,44 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
 
+int n, arr[1000], dp[1000];
+
+void input()
+{
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+		cin >> arr[i];
+}
+
+void solution()
+{
+	for (int i = 0; i < n; i++)
+	{
+		dp[i] = arr[i];
+
+		for (int j = 0; j < i; j++)
+			if (arr[i] > arr[j])
+				dp[i] = max(dp[i], arr[i] + dp[j]);
+	}
+
+	cout << *max_element(dp, dp + n);
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
 int main(void)
 {
-	int n, num, m;
-	cin >> n;
-	vector<int> v, w(n + 1), answer;
-	for (int i = 0; i < n; i++)
-	{
-		cin >> num;
-		v.push_back(num);
-		answer.push_back(num);
-	}
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < i; j++)
-		{
-			if (v[i] > v[j])
-				w[i] = max(w[i], w[j] + 1);
-		}
-	}
-	for (int i = 0; i < n; i++)
-	{
-		m = 0;
-		for (int j = 0; j < i; j++)
-		{
-			if (v[i] > v[j] && w[i] > w[j])
-				m = max(m, answer[j]);
-		}
-		answer[i] += m;
-	}
-	cout << *max_element(answer.begin(), answer.end());
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
 	return 0;
 }
