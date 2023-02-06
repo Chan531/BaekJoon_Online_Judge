@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+long long n;
+
+void input()
+{
+	cin >> n;
+}
+
+void solution()
+{
+	cout << fixed;
+	cout.precision(10);
+
+	double l = sqrt(n);
+	cout << l * 4;
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
+	return 0;
+}
