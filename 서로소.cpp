@@ -24,6 +24,12 @@ void input()
 
 void solution()
 {
+	if (n == 1)
+	{
+		cout << 0;
+		return;
+	}
+
 	int cnt = 1;
 
 	for (int i = 2; i <= N; i++)
@@ -66,4 +72,4 @@ int main(void)
 
 	solve();
 	return 0;
-}	
+}
