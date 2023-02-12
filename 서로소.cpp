@@ -26,7 +26,7 @@ void solution()
 {
 	if (n == 1)
 	{
-		cout << 0;
+		cout << 0 << '\n';
 		return;
 	}
 
@@ -52,9 +52,10 @@ void solution()
 
 void solve()
 {
+	set();
+
 	while (1)
 	{
-		set();
 		input();
 
 		if (n == 0)
