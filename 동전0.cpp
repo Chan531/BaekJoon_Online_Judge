@@ -1,30 +1,40 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
-int main(void)
+int n, k, arr[10], ans;
+
+void input()
 {
-	int n, k, num;
-	vector<int> v;
 	cin >> n >> k;
+
+	for (int i = n - 1; i >= 0; i--)
+		cin >> arr[i];
+}
+
+void solution()
+{
 	for (int i = 0; i < n; i++)
 	{
-		cin >> num;
-		v.push_back(num);
+		ans += k / arr[i];
+		k -= (k / arr[i]) * arr[i];
 	}
-	int count = v.size() - 1;
-	int coin = 0;
-	while (k != 0)
-	{
-		if (k < v[count])
-			count--;
-		else
-		{
-			k -= v[count];
-			coin++;
-		}
-	}
-	cout << coin;
+
+	cout << ans;
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
 	return 0;
 }
