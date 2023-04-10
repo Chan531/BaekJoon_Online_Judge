@@ -95,3 +95,129 @@ int main(void)
 	}
 	return 0;
 }
+
+// Sqrt Decomposition
+
+/*
+
+#include <iostream>
+#include <cmath>
+#define N 1000001
+#define M 1001
+
+using namespace std;
+
+int n, m, q;
+long long arr[N], sum[M], change[M];
+
+void input()
+{
+	cin >> n;
+
+	for (int i = 0; i < 2; i++)
+	{
+		int k;
+		cin >> k;
+
+		q += k;
+	}
+
+	for (int i = 1; i <= n; i++)
+		cin >> arr[i];
+}
+
+void init()
+{
+	for (int i = 1; i <= n; i++)
+		sum[i / m] += arr[i];
+}
+
+void update(int l, int r, long long val)
+{
+	while (l % m != 0 && l <= r)
+	{
+		sum[l / m] += val;
+		arr[l++] += val;
+	}
+
+	while ((r + 1) % m != 0 && l <= r)
+	{
+		sum[r / m] += val;
+		arr[r--] += val;
+	}
+
+	while (l <= r)
+	{
+		change[l / m] += val;
+		sum[l / m] += val * m;
+		l += m;
+	}
+}
+
+void output(int l, int r)
+{
+	long long val = 0;
+
+	while (l % m != 0 && l <= r)
+	{
+		val += change[l / m];
+		val += arr[l++];
+	}
+
+	while ((r + 1) % m != 0 && l <= r)
+	{
+		val += change[r / m];
+		val += arr[r--];
+	}
+
+	while (l <= r)
+	{
+		val += sum[l / m];
+		l += m;
+	}
+
+	cout << val << '\n';
+}
+
+void solution()
+{
+	m = sqrt(n);
+	init();
+
+	while (q--)
+	{
+		int a, b, c;
+		long long d;
+		cin >> a;
+
+		if (a == 1)
+		{
+			cin >> b >> c >> d;
+			update(b, c, d);
+		}
+
+		else
+		{
+			cin >> b >> c;
+			output(b, c);
+		}
+	}
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
+	return 0;
+}
+
+*/
