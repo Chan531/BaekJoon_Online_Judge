@@ -75,3 +75,106 @@ int main(void)
 	}
 	return 0;
 }
+
+
+// Sqrt Decomposition Ç®ÀÌ
+/*
+
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#define N 100001
+#define M 1000
+
+using namespace std;
+
+int n, m, q, arr[N], min_val[M];
+
+void input()
+{
+	cin >> n;
+
+	for (int i = 1; i <= n; i++)
+		cin >> arr[i];
+
+	cin >> q;
+}
+
+void init()
+{
+	for (int i = 0; i <= m; i++)
+		min_val[i] = 1e9;
+
+	for (int i = 1; i <= n; i++)
+		min_val[i / m] = min(min_val[i / m], arr[i]);
+}
+
+void update(int idx, int val)
+{
+	arr[idx] = val;
+	int s = idx / m * m;
+	min_val[s / m] = 1e9;
+
+	for (int i = s; i < s + m; i++)
+	{
+		if (i == n)
+			break;
+
+		min_val[s / m] = min(min_val[s / m], arr[i]);
+	}
+}
+
+void output(int l, int r)
+{
+	int val = 1e9;
+
+	while (l % m != 0 && l <= r)
+		val = min(val, arr[l++]);
+
+	while ((r + 1) % m != 0 && l <= r)
+		val = min(val, arr[r--]);
+
+	while (l <= r)
+	{
+		val = min(val, min_val[l / m]);
+		l += m;
+	}
+
+	cout << val << '\n';
+}
+
+void solution()
+{
+	m = sqrt(n);
+	init();
+
+	while (q--)
+	{
+		int c, i, j;
+		cin >> c >> i >> j;
+
+		if (c == 1)
+			update(i, j);
+
+		else
+			output(i, j);
+	}
+}
+
+void solve()
+{
+	input();
+	solution();
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	solve();
+	return 0;
+}
+
+*/
