@@ -13,9 +13,9 @@ struct node {
 bool cmp(node a, node b)
 {
 	if (a.s / K == b.s / K)
-		return a.e > b.e;
+		return a.e < b.e;
 
-	return a.s / K > b.s / K;
+	return a.s / K < b.s / K;
 }
 
 int n, m, arr[N], ans[N], check[M];
