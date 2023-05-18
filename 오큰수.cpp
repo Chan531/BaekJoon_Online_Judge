@@ -1,41 +1,54 @@
 #include <iostream>
-#include <vector>
 #include <stack>
+#define N 1000100
+#define p pair<int, int>
 
 using namespace std;
+
+int n, arr[N], ans[N];
+stack<p> st;
+
+void input()
+{
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+		cin >> arr[i];
+}
+
+void solution()
+{
+	for (int i = 0; i < n; i++)
+	{
+		while (!st.empty() && st.top().first < arr[i])
+		{
+			ans[st.top().second] = arr[i];
+			st.pop();
+		}
+
+		st.push({ arr[i], i });
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		if (!ans[i])
+			ans[i] = -1;
+
+		cout << ans[i] << ' ';
+	}
+}
+
+void solve()
+{
+	input();
+	solution();
+}
 
 int main(void)
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
-	cout.tie(NULL);
 
-	int n, num;
-	stack<pair<int, int>> s;
-	cin >> n;
-	vector<pair<int, int>> v;
-	vector<int> w(n + 1, -1);
-	for (int i = 1; i <= n; i++)
-	{
-		cin >> num;
-		v.push_back(make_pair(num, i));
-	}
-	int i = 0;
-	while (i != v.size())
-	{
-		if (s.empty() || s.top().first >= v[i].first)
-			s.push(make_pair(v[i].first, v[i].second));
-		else
-		{
-			w[s.top().second] = v[i].first;
-			s.pop();
-			i--;
-		}
-		i++;
-	}
-	for (int i = 1; i <= n; i++)
-	{
-		cout << w[i] << ' ';
-	}
+	solve();
 	return 0;
 }
