@@ -1,36 +1,46 @@
 #include <iostream>
-#include <vector>
+#include <cmath>
+#define N 1010
 
 using namespace std;
 
-int main()
+double n, cnt, arr[N], sum, avg;
+
+void input()
 {
-	int count = 0;
-	cin >> count;
-	for (int i = 0; i < count; i++)
+	cin >> n;
+	for (int i = 0; i < n; i++) cin >> arr[i], sum += arr[i];
+}
+
+void solution()
+{
+	avg = sum / n;
+	for (int i = 0; i < n; i++) if (arr[i] > avg) cnt++;
+	cout << (cnt / n) * 100 << "%\n";
+	sum = 0;
+	cnt = 0;
+}
+
+void solve()
+{
+	cout << fixed;
+	cout.precision(3);
+
+	int tc;
+	cin >> tc;
+
+	while (tc--)
 	{
-		double n = 0;
-		double num = 0;
-		double sum = 0;
-		double per = 0;
-		double ave = 0;
-		vector<int> list;
-		cin >> n;
-		for (int j = 0; j < n; j++)
-		{
-			cin >> num;
-			sum += num;
-			list.push_back(num);
-		}
-		for (auto i : list)
-		{
-			if (i > sum / n)
-				ave++;
-		}
-		per = ave / n;
-		cout << fixed;
-		cout.precision(3);
-		cout << per * 100 << '%' << '\n';
+		input();
+		solution();
 	}
+}
+
+int main(void)
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	solve();
 	return 0;
 }
