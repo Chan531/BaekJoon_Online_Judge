@@ -1,43 +1,44 @@
 #include <iostream>
-#include <vector>
 #include <string>
 
 using namespace std;
 
+int h, w, n;
+string ans;
+
+void input()
+{
+	cin >> h >> w >> n;
+}
+
+void solution()
+{
+	ans = "";
+
+	n% h ? ans += to_string(n % h) : ans += to_string(h);
+	(n - 1) / h >= 9 ? ans += "" : ans += '0';
+	n% h ? ans += to_string(n / h + 1) : ans += to_string(n / h);
+
+	cout << ans << '\n';
+}
+
+void solve()
+{
+	int tc;
+	cin >> tc;
+
+	while (tc--)
+	{
+		input();
+		solution();
+	}
+}
+
 int main(void)
 {
-	int n, num, h, w;
-	cin >> num;
-	for (int i = 0; i < num; i++)
-	{
-		string s = "";
-		cin >> h >> w >> n;
-		if (n % h != 0)
-		{
-			s += to_string(n % h);
-			if (n / h + 1 >= 10)
-				s += to_string(n / h + 1);
-			else
-			{
-				s += '0';
-				s += to_string(n / h + 1);
-			}
-		}
-		else
-		{
-			if (n == h)
-				s += to_string(n);
-			else
-				s += to_string(h % n);
-			if (n / h >= 10)
-				s += to_string(n / h);
-			else
-			{
-				s += '0';
-				s += to_string(n / h);
-			}
-		}
-		cout << s << '\n';
-	}
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+
+	solve();
 	return 0;
 }
