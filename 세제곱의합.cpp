@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int n, sum;
+int n;
 
 void input()
 {
@@ -11,7 +11,7 @@ void input()
 
 void solution()
 {
-	sum = n * (n + 1) / 2;
+	int sum = n * (n + 1) / 2;
 	cout << sum << '\n' << sum * sum << '\n' << sum * sum;
 }
 
