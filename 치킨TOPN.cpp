@@ -5,7 +5,6 @@
 using namespace std;
 
 int n, k, arr[1 << 21];
-vector<int> v;
 
 void input()
 {
@@ -23,6 +22,8 @@ void solution()
 
 	for (int i = 0; i < k; i++)
 	{
+		vector<int> v;
+
 		for (int j = 0; j < n / k; j++)
 			v.push_back(arr[idx++]);
 
@@ -30,8 +31,6 @@ void solution()
 
 		for (auto i : v)
 			cout << i << ' ';
-
-		v.clear();
 	}
 }
 
